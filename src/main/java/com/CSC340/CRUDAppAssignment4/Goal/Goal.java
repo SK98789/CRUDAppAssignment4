@@ -18,18 +18,18 @@ public class Goal {
     @Nullable
     private String details;
     private Date targetDate;
-    private String progress;
+    private String status;
 
     public Goal(){
     }
 
-    public Goal(int goalId, int userId, @Nonnull String title, @Nullable String details, Date targetDate, String progress) {
+    public Goal(int goalId, int userId, @Nonnull String title, @Nullable String details, Date targetDate, String status) {
         this.goalId = goalId;
         this.userId = userId;
         this.title = title;
         this.details = details;
         this.targetDate = targetDate;
-        this.progress = progress;
+        this.status = status;
     }
 
     public int getGoalId() {
@@ -74,11 +74,11 @@ public class Goal {
         this.targetDate = targetDate;
     }
 
-    public String getProgress() {
-        return progress;
+    public String getStatus() {
+        return status;
     }
 
-    public void setProgress(String progress) {
-        this.progress = progress;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -35,6 +35,11 @@ public class GoalController {
         model.addAttribute("goal", goalService.getGoalById(id));
         return "GoalDetails";
     }
+    @GetMapping("/delete/{id}")
+    public String deleteGoalByID(@PathVariable int id){
+        goalService.deleteGoalById(id);
+        return "redirect:/goals/all";
+    }
 
 
 }

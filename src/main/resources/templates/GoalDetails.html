@@ -7,11 +7,18 @@
     <title>Goals</title>
 </head>
 <div style="padding: 10px; display: flex; flex-direction: column; justify-content: center; gap:20px;">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 72rem;">
         <div class="card-body">
-            <div style="padding: 10px; display: flex; flex-direction: row; gap:20px;">
+            <div style="padding: 10px; display: flex; align-items: center; flex-direction: row; gap:20px;">
                 <H1 class="card-title" data-th-text="${goal.title}"></H1>
-                <span class="badge text-bg-secondary" data-th-text="${goal.status}"></span>
+                <span class="badge rounded-pill text-bg-info" data-th-text="${goal.status}"></span>
+                <!---data-th-href="@{/goals/newGoal}"--->
+                <a type="button" class="btn btn-primary" style="position:absolute; top: 20px; right: 100px;">
+                    Edit
+                </a>
+                <a data-th-href="@{/goals/delete/{id} (id=${goal.goalId})}" type="button" class="btn btn-primary" style="position:absolute; top: 20px; right: 20px;">
+                    Delete
+                </a>
             </div>
             <h2 class="card-subtitle mb-2 text-body-secondary" data-th-text="${goal.targetDate}"></h2>
             <p class="card-text" data-th-text="${goal.details}"></p>

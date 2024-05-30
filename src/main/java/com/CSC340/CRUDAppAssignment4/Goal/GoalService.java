@@ -18,4 +18,7 @@ public class GoalService {
     public Object getGoalById(int id){
         return goalRepository.findById(id).orElse(null);
     }
+    public void deleteGoalById(int id){
+        goalRepository.deleteById(id);
+    }
 }

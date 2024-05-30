@@ -9,7 +9,7 @@
 <div style="padding: 10px; display: flex; flex-direction: column; justify-content: center; gap:20px;">
     <div>
         <h1 style="text-align: center;">My Goals</h1>
-        <a href="CreateAGoal.html" type="button" class="btn btn-primary" style="position:absolute; top: 20px; right: 20px;">
+        <a data-th-href="@{/goals/newGoal}" type="button" class="btn btn-primary" style="position:absolute; top: 20px; right: 20px;">
             Add Goal
         </a>
     </div>
@@ -24,10 +24,10 @@
         <tbody>
         <tr data-th-each="goal: ${goalList}">
             <td>
-                <a data-th-href="@{/goals/{id}(id=${goal.id})}" data-th-text="${goal.title}"></a>
+                <a data-th-href="@{/goals/{id}(id=${goal.goalId})}" data-th-text="${goal.title}"></a>
             </td>
             <td data-th-text="${goal.targetDate}"></td>
-            <td data-th-text="${goal.status}"></td>
+            <td data-th-text="${goal.title}"></td>
         </tr>
         </tbody>
     </table>

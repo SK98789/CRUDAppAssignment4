@@ -15,7 +15,7 @@ public class GoalService {
     public void addNewGoal(Goal goal){
         goalRepository.save(goal);
     }
-    public Object getGoalById(int id){
+    public Goal getGoalById(int id){
         return goalRepository.findById(id).orElse(null);
     }
     public void deleteGoalById(int id){

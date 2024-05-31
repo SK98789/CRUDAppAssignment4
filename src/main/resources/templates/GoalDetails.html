@@ -7,13 +7,15 @@
     <title>Goals</title>
 </head>
 <div style="padding: 10px; display: flex; flex-direction: column; justify-content: center; gap:20px;">
+    <a data-th-href="@{/goals/all}" type="button" class="btn btn-primary" style="max-width:200px;">
+        Back To Goals
+    </a>
     <div class="card" style="width: 72rem;">
         <div class="card-body">
             <div style="padding: 10px; display: flex; align-items: center; flex-direction: row; gap:20px;">
                 <H1 class="card-title" data-th-text="${goal.title}"></H1>
                 <span class="badge rounded-pill text-bg-info" data-th-text="${goal.status}"></span>
-                <!---data-th-href="@{/goals/newGoal}"--->
-                <a type="button" class="btn btn-primary" style="position:absolute; top: 20px; right: 100px;">
+                <a data-th-href="@{/goals/edit/{id} (id=${goal.goalId})}" type="button" class="btn btn-primary" style="position:absolute; top: 20px; right: 100px;">
                     Edit
                 </a>
                 <a data-th-href="@{/goals/delete/{id} (id=${goal.goalId})}" type="button" class="btn btn-primary" style="position:absolute; top: 20px; right: 20px;">
@@ -22,6 +24,35 @@
             </div>
             <h2 class="card-subtitle mb-2 text-body-secondary" data-th-text="${goal.targetDate}"></h2>
             <p class="card-text" data-th-text="${goal.details}"></p>
+            <div class="card-body">
+                <div style="padding: 10px; display: flex; align-items: center; flex-direction: column; gap:20px;">
+                    <div style="padding: 10px; display: flex; flex-direction: row; gap:20px;">
+                        <H3 class="card-title">Tasks</H3>
+                        <a data-th-href="@{/goals/{id}/newTask (id=${goal.goalId})}" type="button" class="btn btn-primary">
+                            Add Task
+                        </a>
+
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-th-each="task: ${taskList}">
+                            <td>
+                                <a data-th-href="@{/goals/taskDetails/{id} (id=${task.taskId})}" data-th-text="${task.title}"></a>
+                            </td>
+                            <td data-th-text="${task.status}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
         </div>
     </div>
 

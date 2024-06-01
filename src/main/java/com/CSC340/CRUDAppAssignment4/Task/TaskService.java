@@ -4,6 +4,8 @@ import com.CSC340.CRUDAppAssignment4.Goal.Goal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TaskService {
     @Autowired
@@ -31,7 +33,7 @@ public class TaskService {
      * @param goalId is the goal ID to search for
      * @return a list
      */
-    public Object getAllTasksByGoal(int goalId){
+    public List<Task> getAllTasksByGoal(int goalId){
         return taskRepository.getTasksByGoal(goalId);
     }
 

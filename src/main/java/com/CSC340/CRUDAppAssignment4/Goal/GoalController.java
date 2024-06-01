@@ -1,5 +1,6 @@
 package com.CSC340.CRUDAppAssignment4.Goal;
 
+import com.CSC340.CRUDAppAssignment4.Task.Task;
 import com.CSC340.CRUDAppAssignment4.Task.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.List;
 
 @Controller
 @RequestMapping("/goals")
@@ -65,12 +67,17 @@ public class GoalController {
     }
 
     /**
-     * Deletes a specific goal from the database and redirects to the list of goals page
+     * Deletes a specific goal from the database, deletes all tasks associated with this goal,
+     * and redirects to the list of goals page
      * @param id is the id of the goal to delete
      * @return a redirect to the list of goals page
      */
     @GetMapping("/delete/{id}")
     public String deleteGoalByID(@PathVariable int id){
+        List<Task> tasks = taskService.getAllTasksByGoal(id);
+        for(Task t: tasks){
+            taskService.deleteTaskById(t.getTaskId());
+        }
         goalService.deleteGoalById(id);
         return "redirect:/goals/all";
     }
